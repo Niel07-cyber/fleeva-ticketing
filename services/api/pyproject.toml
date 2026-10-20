@@ -1,0 +1,43 @@
+[project]
+name = "valmont-api"
+version = "0.1.0"
+description = "Lambda handlers for the Valmont ticketing platform"
+requires-python = ">=3.13"
+dependencies = [
+  "boto3>=1.35",
+  "aws-lambda-powertools>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-cov>=5",
+  "moto[dynamodb]>=5",
+  "ruff>=0.6",
+  "mypy>=1.11",
+  "boto3-stubs[dynamodb]>=1.35",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=valmont_api --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+mypy_path = "src"
