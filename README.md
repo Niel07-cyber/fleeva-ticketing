@@ -10,7 +10,7 @@ Serverless football ticketing platform on AWS (fictional club). Angular frontend
 | `apps/web` | Angular app: public site, fan account |
 | `services/api` | Python 3.13 Lambda handlers |
 | `infra` | Terraform |
-| `packages/` | Venue generator, API contracts |
+| `packages/venue` | Python generator for the Fleeva Arena seat map (`make venue`) |
 | `scripts/` | Seeding and load tests |
 
 ## Local development
