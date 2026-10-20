@@ -1,0 +1,32 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.status {
+  padding: 3rem 0;
+  text-align: center;
+  color: #666;
+}
+
+.notice {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: #fff4e5;
+  color: #8a4b00;
+}
+
+.side {
+  position: sticky;
+  top: 1rem;
+}

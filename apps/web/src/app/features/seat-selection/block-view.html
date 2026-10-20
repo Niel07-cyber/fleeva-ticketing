@@ -1,0 +1,38 @@
+<div class="toolbar">
+  <button type="button" class="back" (click)="back.emit()">← Stadium</button>
+  <h2>Block {{ block().blockId }}</h2>
+  <span class="cat" [style.background]="category().colour">
+    {{ category().label }} · {{ category().priceCents / 100 }} €
+  </span>
+</div>
+
+<svg class="seats" [attr.viewBox]="viewBox()" role="group" [attr.aria-label]="'Seats in block ' + block().blockId">
+  @for (r of rowLabels(); track r.row) {
+    <text class="row-label" [attr.x]="r.x - 3.5" [attr.y]="r.y">{{ r.row }}</text>
+  }
+  @for (seat of seats(); track seat.id) {
+    <circle
+      class="seat"
+      [class.free]="stateOf(seat) === 'FREE'"
+      [class.held]="stateOf(seat) === 'HELD'"
+      [class.sold]="stateOf(seat) === 'SOLD'"
+      [class.selected]="isSelected(seat)"
+      [attr.cx]="seat.x"
+      [attr.cy]="seat.y"
+      r="1.25"
+      role="button"
+      [attr.aria-label]="label(seat)"
+      [attr.aria-pressed]="isSelected(seat)"
+      (click)="toggle(seat)"
+    >
+      <title>{{ label(seat) }}</title>
+    </circle>
+  }
+</svg>
+
+<ul class="legend" aria-hidden="true">
+  <li><span class="dot free"></span>Available</li>
+  <li><span class="dot selected"></span>Your selection</li>
+  <li><span class="dot held"></span>Held by another fan</li>
+  <li><span class="dot sold"></span>Sold</li>
+</ul>

@@ -1,0 +1,21 @@
+<h2>Your seats <small>{{ lines().length }}/{{ maxSeats() }}</small></h2>
+
+@if (lines().length === 0) {
+  <p class="empty">Pick a block on the map, then choose your seats.</p>
+} @else {
+  <ul>
+    @for (line of lines(); track line.seat.id) {
+      <li>
+        <span>Block {{ line.seat.blockId }} · Row {{ line.seat.row }} · Seat {{ line.seat.number }}</span>
+        <span class="price">{{ line.priceCents / 100 | currency: 'EUR' }}</span>
+        <button type="button" (click)="removed.emit(line.seat)"
+                [attr.aria-label]="'Remove seat ' + line.seat.number">✕</button>
+      </li>
+    }
+  </ul>
+  <p class="total">Total <strong>{{ totalCents() / 100 | currency: 'EUR' }}</strong></p>
+}
+
+<button type="button" class="cta" disabled title="Seat holds arrive with the booking feature">
+  Continue to payment
+</button>
