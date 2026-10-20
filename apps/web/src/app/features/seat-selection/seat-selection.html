@@ -1,0 +1,33 @@
+<section class="page">
+  <div class="stage">
+    @if (layout(); as layout) {
+      @if (selectedBlock(); as block) {
+        @if (seatStates.value(); as states) {
+          <app-block-view
+            [layout]="layout"
+            [block]="block"
+            [states]="states"
+            [selectedIds]="selectedIds()"
+            (seatToggled)="toggleSeat($event)"
+            (back)="selectBlock(null)"
+          />
+        } @else {
+          <p class="status">Loading seats…</p>
+        }
+      } @else if (summaries.value(); as summaries) {
+        <app-stadium-map [layout]="layout" [summaries]="summaries"
+                         (blockSelected)="selectBlock($event)" />
+      } @else {
+        <p class="status">Loading stadium…</p>
+      }
+    } @else {
+      <p class="status">Loading stadium…</p>
+    }
+    @if (notice(); as message) {
+      <p class="notice" role="alert">{{ message }}</p>
+    }
+  </div>
+
+  <app-basket class="side" [lines]="basketLines()" [maxSeats]="maxSeats"
+              (removed)="removeSeat($event)" />
+</section>

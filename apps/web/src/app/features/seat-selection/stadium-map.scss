@@ -1,0 +1,74 @@
+.map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pitch {
+  fill: #2f8f4e;
+}
+
+.marking {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.7);
+  stroke-width: 2;
+}
+
+.block {
+  cursor: pointer;
+  outline: none;
+
+  path {
+    stroke: #fff;
+    stroke-width: 1.5;
+    transition: filter 0.15s;
+  }
+
+  text {
+    font-size: 12px;
+    font-weight: 600;
+    fill: #fff;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: rgba(0, 0, 0, 0.45);
+    stroke-width: 2px;
+  }
+
+  &:hover path,
+  &:focus-visible path {
+    filter: brightness(1.15);
+    stroke: #0b3d2e;
+    stroke-width: 3;
+  }
+}
+
+.legend {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #444;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+
+  .gradient {
+    width: 96px;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgb(215, 48, 39), rgb(244, 180, 0), rgb(29, 158, 117));
+  }
+
+  .swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-left: 0.75rem;
+  }
+
+  .sold {
+    background: #9aa0a6;
+  }
+}

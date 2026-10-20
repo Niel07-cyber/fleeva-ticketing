@@ -1,0 +1,26 @@
+<svg class="map" [attr.viewBox]="viewBox()" role="group" aria-label="Stadium map">
+  <rect class="pitch" [attr.x]="layout().pitch.x" [attr.y]="layout().pitch.y"
+        [attr.width]="layout().pitch.w" [attr.height]="layout().pitch.h" rx="6" />
+  <line class="marking" [attr.x1]="layout().bowl.cx" [attr.y1]="layout().pitch.y"
+        [attr.x2]="layout().bowl.cx" [attr.y2]="layout().pitch.y + layout().pitch.h" />
+  <circle class="marking" [attr.cx]="layout().bowl.cx" [attr.cy]="layout().bowl.cy" r="40" />
+
+  @for (b of blocks(); track b.block.blockId) {
+    <g class="block" tabindex="0" role="button" [attr.aria-label]="b.label"
+       (click)="blockSelected.emit(b.block.blockId)"
+       (keydown.enter)="blockSelected.emit(b.block.blockId)"
+       (keydown.space)="blockSelected.emit(b.block.blockId); $event.preventDefault()">
+      <path [attr.d]="b.block.polygon" [attr.fill]="b.fill" />
+      <text [attr.x]="b.block.labelAnchor[0]" [attr.y]="b.block.labelAnchor[1]">
+        {{ b.block.blockId }}
+      </text>
+    </g>
+  }
+</svg>
+
+<div class="legend" aria-hidden="true">
+  <span>Few seats left</span>
+  <span class="gradient"></span>
+  <span>Plenty available</span>
+  <span class="swatch sold"></span><span>Sold out</span>
+</div>
