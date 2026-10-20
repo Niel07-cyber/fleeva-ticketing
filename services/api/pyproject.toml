@@ -1,7 +1,7 @@
 [project]
-name = "valmont-api"
+name = "fleeva-api"
 version = "0.1.0"
-description = "Lambda handlers for the Valmont ticketing platform"
+description = "Lambda handlers for the Fleeva ticketing platform"
 requires-python = ">=3.13"
 dependencies = [
   "boto3>=1.35",
@@ -27,7 +27,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=valmont_api --cov-report=term-missing"
+addopts = "--cov=fleeva_api --cov-report=term-missing"
 
 [tool.ruff]
 line-length = 100

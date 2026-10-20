@@ -1,7 +1,7 @@
 import json
 from typing import Any
 
-from valmont_api import __version__
+from fleeva_api import __version__
 
 
 def handler(event: dict[str, Any], context: object) -> dict[str, Any]:
