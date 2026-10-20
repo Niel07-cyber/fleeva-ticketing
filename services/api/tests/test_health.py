@@ -1,6 +1,6 @@
 import json
 
-from valmont_api.handlers.health import handler
+from fleeva_api.handlers.health import handler
 
 
 def test_health_returns_ok() -> None:

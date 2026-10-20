@@ -1,4 +1,4 @@
-# AS Valmont Ticketing
+# FleevaFC Ticketing
 
 Serverless football ticketing platform on AWS (fictional club). Angular frontend, Python Lambda backend, DynamoDB, Terraform, GitHub Actions.
 
